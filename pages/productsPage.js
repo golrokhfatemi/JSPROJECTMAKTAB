@@ -10,36 +10,36 @@ return`
 `
 }
 
-async function getData(){
-    try{
-        const response = await fetch(`https://fakestoreapi.com/products`)
-        const data = await response.json()
-        console.log(response);
-        console.log(data);
-        renderData(data)
+// async function getData(){
+//     try{
+//         const response = await fetch(`https://fakestoreapi.com/products`)
+//         const data = await response.json()
+//         console.log(response);
+//         console.log(data);
+//         renderData(data)
         
-    }catch(e){
-        console.log(e);
-    }
+//     }catch(e){
+//         console.log(e);
+//     }
     
-}
+// }
 
-const dataDiv = document.getElementById("data")
-function renderData(products){
-    products.forEach((product) => {
-    const productDiv = document.createElement("div")
+// const dataDiv = document.getElementById("data")
+// function renderData(products){
+//     products.forEach((product) => {
+//     const productDiv = document.createElement("div")
     
-    productDiv.innerHTML =`
-    <div class="bg-gray-500 w-1/5  flex flex-wrap gap-5">
+//     productDiv.innerHTML =`
+//     <div class="bg-gray-500 w-1/5  flex flex-wrap gap-5">
    
-    <p>${product.description}</P>
-    <p class="font-bold">${product.price}$</P>
-    <img src="${product.image} class="w-32 h-32">
+//     <p>${product.description}</P>
+//     <p class="font-bold">${product.price}$</P>
+//     <img src="${product.image} class="w-32 h-32">
    
-    </div>
-    `
-    dataDiv.append(productDiv);
-});
-}
+//     </div>
+//     `
+//     dataDiv.append(productDiv);
+// });
+// }
  
-getData()
+// getData()

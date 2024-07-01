@@ -3,7 +3,7 @@ import axios from "../api";
 import { router, routes } from "../main";
 
 
-export function loginPage() {
+export function registerPage() {
   return `
     <div class="w-full flex flex-col">
       <form class="flex items-center justify-around flex-col h-screen">
@@ -14,7 +14,7 @@ export function loginPage() {
           <div
             class="w-[342px] h-[39px] mt-[118px] items-center flex justify-center"
           >
-            <h3 class="font-semibold text-3xl">Login To Your Account</h3>
+            <h3 class="font-semibold text-3xl">Register Page</h3>
           </div>
         </div>
         <div class="flex items-center justify-center flex-col gap-3">
@@ -40,7 +40,7 @@ export function loginPage() {
                     
                 </div>
                  <div class="flex justify-center items-center ">
-                    <button class="px-5 py-2 inline-block rounded-full border border-zinc-300 " >register</button>
+                    <button class="px-5 py-2 inline-block rounded-full border border-zinc-300 " >login</button>
                 </div>
         </div>
 
@@ -54,7 +54,7 @@ export function loginPage() {
     `;
 }
 
-export const login = () => {
+export const register = () => {
   document.querySelector("form").addEventListener("submit", async (e) => {
     e.preventDefault();
     
@@ -63,14 +63,14 @@ export const login = () => {
       password: e.target["password"].value,
     };
     try {
-      const response = await axios.post(`/login`, credentials);
+      const response = await axios.post(`/register`, credentials);
       console.log(response);
       if (response.status === 200) {
        
         localStorage.setItem("accessToken", response.data.accessToken);
         localStorage.setItem("email", response.data.user.email);
 
-      //  router.navigate(routes.home)
+       router.navigate(routes.login)
         
       }
     } catch (e) {

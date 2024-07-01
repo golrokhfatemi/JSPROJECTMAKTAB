@@ -5,14 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "server":"json-server db.json -m ./node_modules/json-server-auth",
+    "serve": "json-server-auth db.json --watch ",
     "build": "vite build",
-    "preview": "vite preview"
-    
+    "preview": "vite preview",
+    "tailwind": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
-    "json-server": "^1.0.0-beta.1",
+    "json-server": "^0.17.4",
     "json-server-auth": "^2.1.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "axios": "^1.7.2",
-    "navigo": "^8.11.1"
+    "navigo": "^8.11.1",
+    "swiper": "^11.1.4"
   }
 }

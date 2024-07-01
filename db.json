@@ -4,16 +4,6 @@
       "email": "goli@yahoo.com",
       "password": "$2a$10$PYUY0h0eGTzJN4tDmKuG2uxloKPsouOlU5S.dBo7BFiK1e6Byqtou",
       "id": 1
-    },
-    {
-      "email": "mahi@yahoo.com",
-      "password": "$2a$10$rVSFweJLeBIrWx54Kdpv6eP5rZHdZsOckYD1PHPikvMOYIaiIl4Hq",
-      "id": 2
-    },
-    {
-      "email": "soli@yahoo.com",
-      "password": "$2a$10$IHtrpwiNlXNRd49QLNMl8uPmj.X7qNTBTCQobNKtg8IGSG/mRYK/u",
-      "id": 3
     }
   ]
 }
