@@ -2,18 +2,831 @@
   "users": [
     {
       "email": "goli@yahoo.com",
-      "password": "$2a$10$PYUY0h0eGTzJN4tDmKuG2uxloKPsouOlU5S.dBo7BFiK1e6Byqtou",
+      "password": "$2a$10$6RWSFBdgUfriGstRDhZTZO5dLoEHYWebrSRbQyT3e5D4lyuj3UdtO",
       "id": 1
     },
     {
       "email": "ali@yahoo.com",
-      "password": "$2a$10$EI9CrH09BLftAIfCEdsMz.bq01.FEE2Y7YhRB5O8EY4vDbhDntQNm",
+      "password": "$2a$10$P7wCkPVYYHGwjJdFxJ27huJanOMW8MMZN9ZUZroGzxKQvxJ1jSnFG",
       "id": 2
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Nike React Infinity Run Flyknit",
+      "brand": "NIKE",
+      "gender": "MEN",
+      "category": "RUNNING",
+      "price": 160,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/nike/1.webp",
+      "slug": "nike-react-infinity-run-flyknit"
     },
     {
-      "email": "soli@yahoo.com",
-      "password": "$2a$10$7qw7oME4HRQb6HoZXBqTD.gyRkQFFB5F4oNGwXQFBpr4xlS9PXtz.",
-      "id": 3
+      "id": 2,
+      "name": "Nike React Miler",
+      "brand": "NIKE",
+      "gender": "MEN",
+      "category": "RUNNING",
+      "price": 130,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-5cc7de3b-2afc-49c2-a1e4-0508997d09e6/react-miler-mens-running-shoe-DgF6nr.jpg",
+      "slug": "nike-react-miler"
+    },
+    {
+      "id": 3,
+      "name": "Nike Air Zoom Pegasus 37",
+      "brand": "NIKE",
+      "gender": "WOMEN",
+      "category": "RUNNING",
+      "price": 120,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/i1-33b0a0a5-c171-46cc-ad20-04a768703e47/air-zoom-pegasus-37-womens-running-shoe-Jl0bDf.jpg",
+      "slug": "nike-air-zoom-pegasus-37"
+    },
+    {
+      "id": 4,
+      "name": "Nike Joyride Run Flyknit",
+      "brand": "NIKE",
+      "gender": "WOMEN",
+      "category": "RUNNING",
+      "price": 180,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/99a7d3cb-e40c-4474-91c2-0f2e6d231fd2/joyride-run-flyknit-womens-running-shoe-HcfnJd.jpg",
+      "slug": "nike-joyride-run-flyknit"
+    },
+    {
+      "id": 5,
+      "name": "Nike Mercurial Vapor 13 Elite FG",
+      "brand": "NIKE",
+      "gender": "WOMEN",
+      "category": "FOOTBALL",
+      "price": 250,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/9dda6202-e2ff-4711-9a09-0fcb7d90c164/mercurial-vapor-13-elite-fg-firm-ground-soccer-cleat-14MsF2.jpg",
+      "slug": "nike-mercurial-vapor-13-elite-fg"
+    },
+    {
+      "id": 6,
+      "name": "Converse Phantom Venom Academy FG",
+      "brand": "CONVERSE",
+      "gender": "WOMEN",
+      "category": "FOOTBALL",
+      "price": 150,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/converse/1.jpg",
+      "slug": "nike-phantom-vision-elite-dynamic-fit-fg"
+    },
+    {
+      "id": 7,
+      "name": "Nike Phantom Venom Academy FG",
+      "brand": "NIKE",
+      "gender": "WOMEN",
+      "category": "FOOTBALL",
+      "price": 80,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/whegph8z9ornhxklc8rp/phantom-venom-academy-fg-firm-ground-soccer-cleat-6JVNll.jpg",
+      "slug": "nike-phantom-venom-academy-fg"
+    },
+    {
+      "id": 8,
+      "name": "Asics Phantom Vision Elite Dynamic Fit FG",
+      "brand": "ASICS",
+      "gender": "MEN",
+      "category": "FOOTBALL",
+      "price": 145,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/asics/1.webp",
+      "slug": "nike-mercurial-vapor-13-elite-tech-craft-fg"
+    },
+    {
+      "id": 9,
+      "name": "Asics Phantom Vision Elite Dynamic Fit FG",
+      "brand": "ASICS",
+      "gender": "MEN",
+      "category": "FOOTBALL",
+      "price": 137,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/asics/2.webp",
+      "slug": "nike-mercurial-superfly-7-pro-mds-fg"
+    },
+    {
+      "id": 10,
+      "name": "New Balance Mercurial Vapor 13 Elite Tech Craft FG",
+      "brand": "NEWBALANCE",
+      "gender": "KIDS",
+      "category": "CASUAL",
+      "price": 90,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/newbalance/1.webp",
+      "slug": "nike-air-force-1"
+    },
+    {
+      "id": 11,
+      "name": "New Balance Mercurial Vapor 13 Elite Tech Craft FG",
+      "brand": "NEWBALANCE",
+      "gender": "KIDS",
+      "category": "CASUAL",
+      "price": 100,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/newbalance/2.webp",
+      "slug": "nike-air-max-90"
+    },
+    {
+      "id": 12,
+      "name": "Club C Revenge Mens",
+      "brand": "REEBOK",
+      "gender": "KIDS",
+      "category": "CASUAL",
+      "price": 110,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/reebok/1.webp",
+      "slug": "nike-air-max-90-ltr"
+    },
+    {
+      "id": 13,
+      "name": "Club C Revenge Mens",
+      "brand": "REEBOK",
+      "gender": "KIDS",
+      "category": "RUNNING",
+      "price": 110,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": false,
+      "items_left": 3,
+      "imageURL": "/src/img/products/reebok/2.webp",
+      "slug": "nike-joyride-dual-run"
+    },
+    {
+      "id": 14,
+      "name": "Club C Revenge Mens",
+      "brand": "REEBOK",
+      "gender": "KIDS",
+      "category": "RUNNING",
+      "price": 80,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/reebok/3.webp",
+      "slug": "nike-renew-run"
+    },
+    {
+      "id": 15,
+      "name": "Nizza X Disney",
+      "brand": "ADIDAS",
+      "gender": "KIDS",
+      "category": "CASUAL",
+      "price": 55,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 6,
+      "imageURL": "https://assets.adidas.com/images/h_320,f_auto,q_auto:sensitive,fl_lossy/ef901c7aeac042578eceab9d0159196c_9366/Nizza_x_Disney_Sport_Goofy_Shoes_White_FW0651_01_standard.jpg",
+      "slug": "nizza-x-disney"
+    },
+    {
+      "id": 16,
+      "name": "X_PLR",
+      "brand": "PUMA",
+      "gender": "KIDS",
+      "category": "CASUAL",
+      "price": 65,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 5,
+      "imageURL": "/src/img/products/puma/1.webp",
+      "slug": "x_plr"
+    },
+    {
+      "id": 17,
+      "name": "Puma Air Zoom Pegasus 37",
+      "brand": "PUMA",
+      "gender": "WOMEN",
+      "category": "RUNNING",
+      "price": 120,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/puma/2.webp",
+      "slug": "nike-air-zoom-pegasus-37"
+    },
+    {
+      "id": 18,
+      "name": "Asics Joyride Run Flyknit",
+      "brand": "ASICS",
+      "gender": "WOMEN",
+      "category": "RUNNING",
+      "price": 180,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/asics/3.webp",
+      "slug": "nike-joyride-run-flyknit"
+    },
+    {
+      "id": 19,
+      "name": "Asics Phantom Vision Elite Dynamic Fit FG",
+      "brand": "ASICS",
+      "gender": "WOMEN",
+      "category": "FOOTBALL",
+      "price": 150,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/asics/4.webp",
+      "slug": "nike-phantom-vision-elite-dynamic-fit-fg"
+    },
+    {
+      "id": 20,
+      "name": "New Balance Mercurial Vapor 13 Elite Tech Craft FG",
+      "brand": "NEWBALANCE",
+      "gender": "MEN",
+      "category": "FOOTBALL",
+      "price": 145,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/newbalance/3.webp",
+      "slug": "nike-mercurial-vapor-13-elite-tech-craft-fg"
+    },
+    {
+      "id": 21,
+      "name": "New Balance Mercurial Vapor 13 Elite Tech Craft FG",
+      "brand": "NEWBALANCE",
+      "gender": "KIDS",
+      "category": "RUNNING",
+      "price": 80,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/newbalance/4.webp",
+      "slug": "nike-renew-run"
+    },
+    {
+      "id": 22,
+      "name": "Converse Renew Run",
+      "brand": "CONVERSE",
+      "gender": "KIDS",
+      "category": "RUNNING",
+      "price": 80,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/converse/2.jpg",
+      "slug": "nike-renew-run"
+    },
+    {
+      "id": 23,
+      "name": "Converse Mercurial Vapor 13 Elite FG",
+      "brand": "CONVERSE",
+      "gender": "WOMEN",
+      "category": "FOOTBALL",
+      "price": 250,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/converse/3.jpg",
+      "slug": "nike-mercurial-vapor-13-elite-fg"
+    },
+    {
+      "id": 24,
+      "name": "Converse Phantom Venom Academy FG",
+      "brand": "CONVERSE",
+      "gender": "WOMEN",
+      "category": "FOOTBALL",
+      "price": 80,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/converse/4.jpg",
+      "slug": "nike-phantom-venom-academy-fg"
+    },
+    {
+      "id": 25,
+      "name": "Club C Revenge Mens",
+      "brand": "REEBOK",
+      "gender": "KIDS",
+      "category": "RUNNING",
+      "price": 80,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/reebok/4.webp",
+      "slug": "nike-renew-run"
+    },
+    {
+      "id": 26,
+      "name": "Nizza X Disney",
+      "brand": "ADIDAS",
+      "gender": "KIDS",
+      "category": "CASUAL",
+      "price": 55,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 6,
+      "imageURL": "https://assets.adidas.com/images/h_320,f_auto,q_auto:sensitive,fl_lossy/ef901c7aeac042578eceab9d0159196c_9366/Nizza_x_Disney_Sport_Goofy_Shoes_White_FW0651_01_standard.jpg",
+      "slug": "nizza-x-disney"
+    },
+    {
+      "id": 27,
+      "name": "X_PLR",
+      "brand": "ADIDAS",
+      "gender": "KIDS",
+      "category": "CASUAL",
+      "price": 65,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 5,
+      "imageURL": "https://assets.adidas.com/images/h_320,f_auto,q_auto:sensitive,fl_lossy/a36518227134495da766ab9d01772fa2_9366/X_PLR_Shoes_Red_FY9063_01_standard.jpg",
+      "slug": "x_plr"
+    },
+    {
+      "id": 28,
+      "name": "Stan Smith",
+      "brand": "ADIDAS",
+      "gender": "KIDS",
+      "category": "CASUAL",
+      "price": 55,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "https://assets.adidas.com/images/h_320,f_auto,q_auto:sensitive,fl_lossy/d0720712d81e42b1b30fa80800826447_9366/Stan_Smith_Shoes_White_M20607_M20607_01_standard.jpg",
+      "slug": "stan-smith"
+    },
+    {
+      "id": 29,
+      "name": "NMD_R1",
+      "brand": "ADIDAS",
+      "gender": "KIDS",
+      "category": "RUNNING",
+      "price": 120,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "https://assets.adidas.com/images/h_320,f_auto,q_auto:sensitive,fl_lossy/99ca762cb9054caf82fbabc500fd146e_9366/NMD_R1_Shoes_Blue_FY9392_01_standard.jpg",
+      "slug": "nmd_r1"
+    },
+    {
+      "id": 30,
+      "name": "NMD_R1 Flash Red",
+      "brand": "ADIDAS",
+      "gender": "WOMEN",
+      "category": "CASUAL",
+      "price": 140,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 5,
+      "imageURL": "https://assets.adidas.com/images/h_320,f_auto,q_auto:sensitive,fl_lossy/90f85768e3894aeaab67aba0014a3379_9366/NMD_R1_Shoes_Red_FY9389_01_standard.jpg",
+      "slug": "nmd_r1-flash-red"
+    },
+    {
+      "id": 31,
+      "name": "Superstar",
+      "brand": "ADIDAS",
+      "gender": "WOMEN",
+      "category": "CASUAL",
+      "price": 90,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "https://assets.adidas.com/images/h_320,f_auto,q_auto:sensitive,fl_lossy/12365dbc7c424288b7cdab4900dc7099_9366/Superstar_Shoes_White_FW3553_FW3553_01_standard.jpg",
+      "slug": "superstar"
+    },
+    {
+      "id": 32,
+      "name": "Club C Revenge Mens",
+      "brand": "REEBOK",
+      "gender": "MEN",
+      "category": "CASUAL",
+      "price": 70,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/reebok/6.webp",
+      "slug": "club-c-revenge-mens"
+    },
+    {
+      "id": 33,
+      "name": "PUMA",
+      "brand": "PUMA",
+      "gender": "MEN",
+      "category": "CASUAL",
+      "price": 60,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/puma/3.webp",
+      "slug": "sk80-low"
+    },
+    {
+      "id": 34,
+      "name": "PUMA Feburary SK8-Hi",
+      "brand": "PUMA",
+      "gender": "MEN",
+      "category": "CASUAL",
+      "price": 72,
+      "sizes": [
+        41,
+        43,
+        45
+      ],
+      "colors": [
+        "black",
+        "brown",
+        "white",
+        "blue",
+        "red"
+      ],
+      "is_in_inventory": true,
+      "items_left": 3,
+      "imageURL": "/src/img/products/puma/4.webp",
+      "slug": "michael-feburary-sk8-hi"
     }
   ]
 }

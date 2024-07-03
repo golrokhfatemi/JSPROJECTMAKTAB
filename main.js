@@ -16,11 +16,11 @@ import { register, registerPage } from './pages/registerPage';
 
 export const router = new Navigo ('/');
 
-function render(){
+// function render(){
     
-document.querySelector("#app").innerHTML =``
+// document.querySelector("#app").innerHTML =``
 
-}
+// }
 
 function renderFullPage(children ,creatEventListener){
   if(children){
@@ -44,12 +44,11 @@ export const routes ={
   router
   
         .on(routes.boarding,() => renderFullPage(boardingPage()))
-        .on(routes.home ,render(homePage()))
-        .on(routes.products ,() => render(productsPage()))
+        .on(routes.home ,() => renderFullPage(homePage()))
+        // .on(routes.products ,() => render(productsPage()))
         // .on(routes.productDetails ,(match) => render(productDetailsPage(match)))
         .on(routes.login ,() => renderFullPage(loginPage(), login))
         .on(routes.register , () =>renderFullPage(registerPage(), register))
-        // .on(routes.signup ,() => renderFullPage(signupPage(),signup))
         .resolve()
 
 
