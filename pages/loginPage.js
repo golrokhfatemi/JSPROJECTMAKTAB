@@ -70,7 +70,7 @@ export const login = () => {
         localStorage.setItem("accessToken", response.data.accessToken);
         localStorage.setItem("email", response.data.user.email);
 
-       router.navigate(routes.home)
+       router.navigate(routes.products)
         
       }
     } catch (e) {

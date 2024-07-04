@@ -171,7 +171,7 @@ export function boardingPage() {
             slides[index + 1].style.display = "block";
           } else {
             sliderContainer.style.display = "none";
-            router.navigate(routes.register);
+            router.navigate(routes.login);
           }
         }
       }
