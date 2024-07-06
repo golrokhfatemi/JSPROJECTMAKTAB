@@ -1,9 +1,21 @@
-import { router, routes } from "../main"
+import axios from "axios";
+import { root, router, routes } from "../main"
+import httpServer from "../api";
 
-export function productsPage(){
+
+export async function productsWrapper(){
+     const data = await productsApi();
+     console.log(data);
+     productsPage(data);
+     brandShow();
+     
+     
+}
+export function productsPage(products){
+    console.log(products);
      const token = localStorage.getItem("accessToken")??false
      if(token){
-          return`
+         root.innerHTML=`
           
      <header class="flex flex-row justify-around">
           <div class="flex justify-start">
@@ -15,7 +27,7 @@ export function productsPage(){
                          <p>good morning</p>
                          <img src="images/👋.png" class="pl-3">
                     </div>
-                         <p class="text-base font-bold">ali ahmadi</p>
+                         <p class="text-base font-bold">${localStorage.getItem("email")}</p>
                </div>
           </div>
                
@@ -37,15 +49,15 @@ export function productsPage(){
           
                     <div class="bg-gray-100 p-2 rounded-md w-[386px] h-[234px]  items-center justify-center flex flex-wrap gap-6 mb-4">
                     
-                         <div class="w-[60px] h-[91px] ">
-                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                         <circle id="Ellipse 1" cx="30" cy="30" r="30" fill="#ECECEC"/>
-                         <image href="images/image 1.png" width=" 60%" height="60%" x="15" y="15">
-                         </svg>
-                         <div class="w-[60] h-[17]  text-center mt-2 text-sm font-semibold">Nike</div>
+                         <div class="brand-group w-[60px] h-[91px] ">
+                              <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <circle id="Ellipse 1" cx="30" cy="30" r="30" fill="#ECECEC"/>
+                              <image href="images/image 1.png" width=" 60%" height="60%" x="15" y="15">
+                              </svg>
+                              <div class="w-[60] h-[17]  text-center mt-2 text-sm font-semibold">Nike</div>
                          </div>
 
-                         <div class="w-[60px] h-[91px] ">
+                         <div class=" brand-group w-[60px] h-[91px] ">
                          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                          <circle id="Ellipse 1" cx="30" cy="30" r="30" fill="#ECECEC"/>
                          <image href="images/image adidas1.png" width=" 60%" height="60%" x="15" y="15">
@@ -53,7 +65,7 @@ export function productsPage(){
                          <div class="w-[60] h-[17]  text-center mt-2 text-sm font-semibold">Adidas</div>
                          </div>
 
-                         <div class="w-[60px] h-[91px] ">
+                         <div class=" brand-group w-[60px] h-[91px] ">
                          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                          <circle id="Ellipse 1" cx="30" cy="30" r="30" fill="#ECECEC"/>
                          <image href="images/image puma1.png" width=" 60%" height="60%" x="15" y="15">
@@ -62,7 +74,7 @@ export function productsPage(){
                          </div>
 
 
-                         <div class="w-[60px] h-[91px] ">
+                         <div class=" brand-group w-[60px] h-[91px] ">
                          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                          <circle id="Ellipse 1" cx="30" cy="30" r="30" fill="#ECECEC"/>
                          <image href="images/image asics1.png" width=" 60%" height="60%" x="15" y="15">
@@ -71,7 +83,7 @@ export function productsPage(){
                          </div>
 
 
-                         <div class="w-[60px] h-[91px] ">
+                         <div class="brand-group w-[60px] h-[91px] ">
                          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                          <circle id="Ellipse 1" cx="30" cy="30" r="30" fill="#ECECEC"/>
                          <image href="images/image rebook 1.png" width=" 60%" height="60%" x="15" y="15">
@@ -80,7 +92,7 @@ export function productsPage(){
                          </div>
 
 
-                         <div class="w-[60px] h-[91px] ">
+                         <div class="brand-group w-[60px] h-[91px] ">
                          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                          <circle id="Ellipse 1" cx="30" cy="30" r="30" fill="#ECECEC"/>
                          <image href="images/image newbalence1.png" width=" 60%" height="60%" x="15" y="15">
@@ -88,7 +100,7 @@ export function productsPage(){
                          <div class="w-[60] h-[17]  text-center mt-2 text-sm font-semibold overflow-hidden">NewB...</div>
                          </div>
 
-                         <div class="w-[60px] h-[91px] ">
+                         <div class="brand-group w-[60px] h-[91px] ">
                          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                          <circle id="Ellipse 1" cx="30" cy="30" r="30" fill="#ECECEC"/>
                          <image href="images/image converse 1.png" width=" 60%" height="60%" x="15" y="15">
@@ -96,7 +108,7 @@ export function productsPage(){
                          <div class="w-[60] h-[17]  text-center mt-2 text-sm font-semibold">Converse</div>
                          </div>
 
-                         <div class="w-[60px] h-[91px] ">
+                         <div class="brand-group w-[60px] h-[91px] ">
                          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                          <circle id="Ellipse 1" cx="30" cy="30" r="30" fill="#ECECEC"/>
                          <image href="images/image More1.png" width=" 60%" height="60%" x="15" y="15">
@@ -135,70 +147,16 @@ export function productsPage(){
                </div>
           </div>
      <!-- carts -->
-          <div class="flex flex-wrap h-[800px] overflow-auto">
-               <div class="flex flex-col mx-4 my-3">
+          <div class="flex flex-wrap h-[800px] overflow-auto ">
+               ${products.map(product => `<div class="flex flex-col mx-4 my-3 w-[182px]">
                     <div class="bg-[#F3F3F3] w-[182px] h-[182px] rounded-lg flex justify-center items-center">
-                    <img src="images/shoe 1.png">
+                    <img src=${product.imageURL}>
                     </div>
-                    <p class="text-xl font-semibold px-2">shoe number 1</p>
-                    <p class="text-base font-semibold px-2">price $</p>
-               </div>
+                    <p class="text-xl font-semibold px-2 whitespace-nowrap overflow-hidden text-ellipsis w-full">${product.name}</p>
+                    <p class="text-base font-semibold px-2">${product.price} $</p>
+               </div>`).join("")}
 
-               <div class="flex flex-col mx-4 my-3">
-                    <div class="bg-[#F3F3F3] w-[182px] h-[182px] rounded-lg flex justify-center items-center">
-                    <img src="images/shoe 1.png">
-                    </div>
-                    <p class="text-xl font-semibold px-2">shoe number 1</p>
-                    <p class="text-base font-semibold px-2">price $</p>
-               </div>
-
-               <div class="flex flex-col mx-4 my-3">
-                    <div class="bg-[#F3F3F3] w-[182px] h-[182px] rounded-lg flex justify-center items-center">
-                    <img src="images/shoe 1.png">
-                    </div>
-                    <p class="text-xl font-semibold px-2">shoe number 1</p>
-                    <p class="text-base font-semibold px-2">price $</p>
-               </div>
-
-               <div class="flex flex-col mx-4 my-3">
-                    <div class="bg-[#F3F3F3] w-[182px] h-[182px] rounded-lg flex justify-center items-center">
-                    <img src="images/shoe 1.png">
-                    </div>
-                    <p class="text-xl font-semibold px-2">shoe number 1</p>
-                    <p class="text-base font-semibold px-2">price $</p>
-               </div>
-
-               <div class="flex flex-col mx-4 my-3">
-                    <div class="bg-[#F3F3F3] w-[182px] h-[182px] rounded-lg flex justify-center items-center">
-                    <img src="images/shoe 1.png">
-                    </div>
-                    <p class="text-xl font-semibold px-2">shoe number 1</p>
-                    <p class="text-base font-semibold px-2">price $</p>
-               </div>
-
-               <div class="flex flex-col mx-4 my-3">
-                    <div class="bg-[#F3F3F3] w-[182px] h-[182px] rounded-lg flex justify-center items-center">
-                    <img src="images/shoe 1.png">
-                    </div>
-                    <p class="text-xl font-semibold px-2">shoe number 1</p>
-                    <p class="text-base font-semibold px-2">price $</p>
-               </div>
-
-               <div class="flex flex-col mx-4 my-3">
-                    <div class="bg-[#F3F3F3] w-[182px] h-[182px] rounded-lg flex justify-center items-center">
-                    <img src="images/shoe 1.png">
-                    </div>
-                    <p class="text-xl font-semibold px-2">shoe number 1</p>
-                    <p class="text-base font-semibold px-2">price $</p>
-               </div>
-
-               <div class="flex flex-col mx-4 my-3">
-                    <div class="bg-[#F3F3F3] w-[182px] h-[182px] rounded-lg flex justify-center items-center">
-                    <img src="images/shoe 1.png">
-                    </div>
-                    <p class="text-xl font-semibold px-2">shoe number 1</p>
-                    <p class="text-base font-semibold px-2">price $</p>
-               </div>
+               
                
           </div>
      </main>
@@ -238,4 +196,22 @@ export function productsPage(){
           router.navigate(routes.login)
      }
    
+}
+
+function brandShow(){
+     
+    const brands = document.querySelectorAll(".brand-group")
+     brands.forEach((item) => item.addEventListener("click" ,()=>{
+          const brandName = item.querySelector("div").innerHTML;
+          router.navigate(`/productsbrand/${brandName}`)
+          console.log(brandName);
+     }))
+    
+
+}
+
+async function productsApi(){
+     const response = await httpServer.get('/products')
+     console.log(response);
+     return response.data
 }
