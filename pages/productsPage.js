@@ -1,6 +1,7 @@
 import axios from "axios";
 import { root, router, routes } from "../main"
 import httpServer from "../api";
+import { productsBrandWrapper } from "./productsBrand";
 
 
 export async function productsWrapper(){
@@ -8,6 +9,9 @@ export async function productsWrapper(){
      console.log(data);
      productsPage(data);
      brandShow();
+     categoryBrandShow()
+     productInfoDisplay()
+     
      
      
 }
@@ -129,26 +133,26 @@ export function productsPage(products){
                <div class="  h-[39px]  border-2 border-black mx-2  rounded-3xl px-2.5 py-5 bg-white  text-black  flex justify-center text-center">
                     <a  href="#" class="font-semibold text-base text-center flex justify-center items-center">All</a>
                </div>
-               <div class=" inline-block h-[39px]  border-2 border-black mx-2  rounded-3xl px-2.5 py-5 bg-white  text-black  flex justify-center text-center">
+               <div class="category-brand inline-block h-[39px]  border-2 border-black mx-2  rounded-3xl px-2.5 py-5 bg-white  text-black  flex justify-center text-center">
                     <a  href="#" class="font-semibold text-base text-center flex justify-center items-center">Nike</a>
                </div>
-               <div class=" inline-block h-[39px]  border-2 border-black mx-2  rounded-3xl px-2.5 py-5 bg-white  text-black  flex justify-center text-center">
+               <div class="category-brand  inline-block h-[39px]  border-2 border-black mx-2  rounded-3xl px-2.5 py-5 bg-white  text-black  flex justify-center text-center">
                     <a  href="#" class="font-semibold text-base text-center flex justify-center items-center">Adidas</a>
                </div>
-               <div class=" inline-block h-[39px]  border-2 border-black mx-2  rounded-3xl px-2.5 py-5 bg-white  text-black  flex justify-center text-center">
+               <div class="category-brand  inline-block h-[39px]  border-2 border-black mx-2  rounded-3xl px-2.5 py-5 bg-white  text-black  flex justify-center text-center">
                     <a  href="#" class="font-semibold text-base text-center flex justify-center items-center">Puma</a>
                </div>
-               <div class=" inline-block h-[39px]  border-2 border-black mx-2  rounded-3xl px-2.5 py-5 bg-white  text-black  flex justify-center text-center">
+               <div class="category-brand  inline-block h-[39px]  border-2 border-black mx-2  rounded-3xl px-2.5 py-5 bg-white  text-black  flex justify-center text-center">
                     <a  href="#" class="font-semibold text-base text-center flex justify-center items-center">Asics</a>
                </div>
-               <div class=" inline-block h-[39px]  border-2 border-black mx-2  rounded-3xl px-2.5 py-5 bg-white  text-black  flex justify-center text-center">
+               <div class="category-brand  inline-block h-[39px]  border-2 border-black mx-2  rounded-3xl px-2.5 py-5 bg-white  text-black  flex justify-center text-center">
                     <a  href="#" class="font-semibold text-base text-center flex justify-center items-center ">Rebook</a>
                </div>
                </div>
           </div>
      <!-- carts -->
           <div class="flex flex-wrap h-[800px] overflow-auto ">
-               ${products.map(product => `<div class="flex flex-col mx-4 my-3 w-[182px]">
+               ${products.map(product => `<div id="${product.id}" class="flex flex-col mx-4 my-3 w-[182px] info">
                     <div class="bg-[#F3F3F3] w-[182px] h-[182px] rounded-lg flex justify-center items-center">
                     <img src=${product.imageURL}>
                     </div>
@@ -203,15 +207,47 @@ function brandShow(){
     const brands = document.querySelectorAll(".brand-group")
      brands.forEach((item) => item.addEventListener("click" ,()=>{
           const brandName = item.querySelector("div").innerHTML;
-          router.navigate(`/productsbrand/${brandName}`)
           console.log(brandName);
+          router.navigate(`/productsbrand/${brandName}`)
      }))
     
 
 }
 
-async function productsApi(){
-     const response = await httpServer.get('/products')
+async function productsApi(sort=""){
+     const response = await httpServer.get(`/products${sort}`)
      console.log(response);
+     console.log(response.data);
+     productsPage(response.data);
+     brandShow();
+     categoryBrandShow()
      return response.data
+}
+
+function categoryBrandShow(){
+     
+     const brands = document.querySelectorAll(".category-brand")
+     
+     brands.forEach((item) => {item.addEventListener("click" , () => {
+          const brandName = item.querySelector("a").innerHTML;
+          const sort= `?brand=`+brandName.toUpperCase()
+          console.log(sort);
+          productsApi(sort)
+     })
+     }
+      )
+    
+}
+
+
+function productInfoDisplay(){
+     const info= document.querySelectorAll(".info")
+     info.forEach((item,index) => item.addEventListener("click" ,(e)=>{
+          const id =info[index].id
+          console.log(id);
+          router.navigate(`/productinfo/${id}`)
+          
+
+     }))
+
 }

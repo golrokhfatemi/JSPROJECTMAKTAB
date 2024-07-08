@@ -8,6 +8,8 @@ import { boardingPage} from './pages/boardingPage';
 import { register, registerPage } from './pages/registerPage';
 import { productsPage, productsWrapper } from './pages/productsPage';
 import { productsBrandWrapper } from './pages/productsBrand';
+import { productInfoPageWrapper } from './pages/productInfoPage';
+import { mycartPageWrapper } from './pages/mycartPage';
 
 
 
@@ -29,7 +31,9 @@ export const routes ={
   login :'/login',
   register : '/register',
   productsbrand :'/productsbrand/:id',
-  productinfo :'/productinfo'
+  productinfo :'/productinfo/:id',
+  mycart :'/mycart'
+  
 }
 
   router
@@ -37,7 +41,8 @@ export const routes ={
         .on(routes.boarding,() => renderFullPage(boardingPage()))
         .on(routes.products ,productsWrapper)
         .on(routes.productsbrand ,(match) => productsBrandWrapper(match))
-        
+        .on(routes.productinfo ,(match) => productInfoPageWrapper(match) )
+        .on(routes.mycart , mycartPageWrapper)
         .on(routes.login ,() => renderFullPage(loginPage(), login))
         .on(routes.register , () =>renderFullPage(registerPage(), register))
         .resolve()
