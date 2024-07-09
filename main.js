@@ -16,7 +16,7 @@ import { mycartPageWrapper } from './pages/mycartPage';
 export const router = new Navigo ('/');
 export const root =document.querySelector("#app")
 
-function renderFullPage(children ,creatEventListener){
+function render(children ,creatEventListener){
   if(children){
     document.querySelector("#app").innerHTML = `<div>${children}</div>`;
     if(creatEventListener){
@@ -24,6 +24,23 @@ function renderFullPage(children ,creatEventListener){
     }
   } 
 }
+
+function checkAuth(next){
+  if(localStorage.getItem("accessToken")){
+    next()
+  }else{
+    router.navigate('/login')
+  }
+  }
+
+function checkProtectedRout(){
+  if(!localStorage.getItem("accessToken")){
+    next()
+  }else{
+    router.navigate('/')
+  }
+}
+
 
 export const routes ={
   boarding :'/',
@@ -38,13 +55,13 @@ export const routes ={
 
   router
   
-        .on(routes.boarding,() => renderFullPage(boardingPage()))
+        .on(routes.boarding,() => render(boardingPage()))
         .on(routes.products ,productsWrapper)
         .on(routes.productsbrand ,(match) => productsBrandWrapper(match))
         .on(routes.productinfo ,(match) => productInfoPageWrapper(match) )
         .on(routes.mycart , mycartPageWrapper)
-        .on(routes.login ,() => renderFullPage(loginPage(), login))
-        .on(routes.register , () =>renderFullPage(registerPage(), register))
+        .on(routes.login ,() => render(loginPage(), login))
+        .on(routes.register , () =>render(registerPage(), register))
         .resolve()
 
 

@@ -1,5 +1,5 @@
 import httpServer from "../api"
-import { root } from "../main"
+import { root, router } from "../main"
 
 
 export async function productInfoPageWrapper(match){
@@ -16,6 +16,38 @@ if (document.querySelector(".size-wrapper")) {
     document.querySelector(".size-wrapper").innerHTML += `<button id="${item}" class=" rounded-full w-9 h-9 mr-1 border-2 border-slate-800">${item}</button>`
     });    
 }
+
+
+const numberElement = document.getElementById('number');
+const increaseButton = document.getElementById('increase');
+const decreaseButton = document.getElementById('decrease');
+const totalPriceDisplay = document.getElementById('total-price');
+
+
+let count = 0;
+let totalPrice = data.price * count;
+
+function updateTotalPrice ()  {
+  totalPrice = data.price * count;
+  totalPriceDisplay.innerText = `$${totalPrice}`;
+  
+};
+
+       increaseButton.addEventListener('click', () => {
+           count++;
+           numberElement.textContent = count;
+           
+       });
+
+       
+       decreaseButton.addEventListener('click', () => {
+           if(count >0)
+           count--;
+           numberElement.textContent = count;
+       });
+       updateTotalPrice()
+       addToCart()
+     
 }
 
 
@@ -87,10 +119,10 @@ function productInfoPage(product){
               <div class="flex flex-row justify-start items-center">
                 <div class="px-8 mt-7 gap-6 flex flex-col ">
                   <span>Total Price</span>
-                  <div class="font-bold text-3xl">$ 240</div>
+                  <div id="total-price" class="font-bold text-3xl">$0</div>
                 </div>
                 <div class=" mt-5">
-                  <button class="border-2 bg-zinc-900 rounded-full w-64 h-20 text-white">Add To Cart</button>
+                  <button id="add-to-cart" class="border-2 bg-zinc-900 rounded-full w-64 h-20 text-white">Add To Cart</button>
                 </div>
               </div>
                 
@@ -136,4 +168,11 @@ function productInfoPage(product){
 async function productInfoApi(id){
   const response = await httpServer.get(`/products/${id}`)
   return response.data
+}
+
+function addToCart(){
+  const addToCart = document.getElementById("add-to-cart")
+  addToCart.addEventListener("click" , () => {
+    router.navigate("/mycart")
+  })
 }

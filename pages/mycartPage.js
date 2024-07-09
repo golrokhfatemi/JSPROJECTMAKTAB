@@ -4,6 +4,18 @@ import { root } from "../main";
 
 export function mycartPageWrapper(){
 mycartPage()
+showDeletProduct()
+
+
+
+}
+
+function showModal() {
+  document.getElementById('modal').classList.remove('hidden');
+}
+
+function hideModal() {
+  document.getElementById('modal').classList.add('hidden');
 }
 
 function mycartPage(){
@@ -99,7 +111,7 @@ function mycartPage(){
                   <div class="font-bold text-3xl">$ 240</div>
                 </div>
                 <div class=" mt-5">
-                  <button class="border-2 bg-zinc-900 rounded-full w-64 h-20 text-white">Chech Out</button>
+                  <button class="border-2 bg-zinc-900 rounded-full w-64 h-20 text-white">Check Out</button>
                 </div>
               </div>
          
@@ -139,4 +151,12 @@ function mycartPage(){
     </footer>
 
     `
+}
+
+
+function showDeletProduct(){
+  const deletedProduct = document.getElementById("trash-icon")
+  deletedProduct.addEventListener("click" ,() => {
+    showModal()
+  })
 }
