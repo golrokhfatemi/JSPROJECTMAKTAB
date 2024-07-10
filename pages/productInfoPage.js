@@ -50,12 +50,6 @@ export async function productInfoPageWrapper(match) {
     });
   }
 
-
-  
-
-
-
-
   updateTotalPrice();
   addToCart(data);
 }
@@ -141,29 +135,29 @@ function productInfoPage(product) {
        
         
     
-    <footer>
+    <footer class="footer">
           <div class="flex gap-x-11 justify-center p-4 border-t-2 border-neutral-200">
-               <div class="flex flex-col items-center justify-between">
+               <div id="home" class="flex flex-col items-center justify-between footer-item">
                <img src="images/house-door-fill.png">
                <p class="text-[10px] font-semibold">Home</p>
                </div>
 
-               <div class="flex flex-col items-center justify-between">
+               <div id="mycart" class="flex flex-col items-center justify-between footer-item">
                <img src="images/bag.png">
                <p class="text-[10px] font-semibold">Cart</p>
                </div>
 
-               <div class="flex flex-col items-center justify-between">
+               <div class="flex flex-col items-center justify-between footer-item">
                <img src="images/cart2.png">
                <p class="text-[10px] font-semibold">Orders</p>
                </div>
 
-               <div class="flex flex-col items-center justify-between">
+               <div class="flex flex-col items-center justify-between footer-item">
                <img src="images/wallet2.png">
                <p class="text-[10px] font-semibold">Wallet</p>
                </div>
 
-               <div class="flex flex-col items-center justify-between">
+               <div class="flex flex-col items-center justify-between footer-item">
                <img src="images/person.png">
                <p class="text-[10px] font-semibold">Profile</p>
                </div>
@@ -219,7 +213,7 @@ function addToCart(product) {
       imageURL: product.imageURL,
     };
 
-    // Check if there is any cart data in localStorage
+   
     let cart = localStorage.getItem("cart");
     if (cart) {
       cart = JSON.parse(cart);
@@ -227,7 +221,7 @@ function addToCart(product) {
       cart = [];
     }
 
-    // Add the new item to the cart
+   
     cart.push(cartItem);
     localStorage.setItem("cart", JSON.stringify(cart));
     router.navigate("/mycart");

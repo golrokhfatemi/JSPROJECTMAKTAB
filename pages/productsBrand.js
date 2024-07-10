@@ -13,11 +13,11 @@ export async function productsBrandWrapper(match){
 function productsBrandPage(products){
     root.innerHTML=`
     <div>
-            <div class="bg-slate-500 h-12 mb-5 flex flex-row items-center">
+            <div class=" h-12 mb-5 flex flex-row items-center px-4 ">
                 <button id="button-back">
-                    <img src="images/arrow-left-short.png">
+                    <i class="fa-solid fa-arrow-left text-2xl"></i>
                 </button>
-                <div class="font-semibold text-2xl pl-4">NIKE</div>
+                <div class="font-semibold text-2xl pl-4"></div>
               
             </div>
             
@@ -34,6 +34,35 @@ function productsBrandPage(products){
                 </div>
 
             </div>
+
+            <footer class="footer">
+          <div class="flex gap-x-11 justify-center p-4 border-t-2 border-neutral-200">
+               <div id="home" class="flex flex-col items-center justify-between footer-item">
+               <img src="images/house-door-fill.png">
+               <p class="text-[10px] font-semibold">Home</p>
+               </div>
+
+               <div id="mycart" class="flex flex-col items-center justify-between footer-item">
+               <img src="images/bag.png">
+               <p class="text-[10px] font-semibold">Cart</p>
+               </div>
+
+               <div class="flex flex-col items-center justify-between footer-item">
+               <img src="images/cart2.png">
+               <p class="text-[10px] font-semibold">Orders</p>
+               </div>
+
+               <div class="flex flex-col items-center justify-between footer-item">
+               <img src="images/wallet2.png">
+               <p class="text-[10px] font-semibold">Wallet</p>
+               </div>
+
+               <div class="flex flex-col items-center justify-between footer-item">
+               <img src="images/person.png">
+               <p class="text-[10px] font-semibold">Profile</p>
+               </div>
+          </div>
+     </footer>
     
     </div>
 

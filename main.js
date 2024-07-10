@@ -11,7 +11,7 @@ import { productsBrandWrapper } from './pages/productsBrand';
 import { productInfoPageWrapper } from './pages/productInfoPage';
 import { mycartPageWrapper } from './pages/mycartPage';
 import { checkoutWapper } from './pages/checkoutPage';
-
+import { MainLayout } from './pages/main-layout';
 
 
 export const router = new Navigo ('/');
@@ -58,7 +58,7 @@ export const routes ={
   router
   
         .on(routes.boarding,() => render(boardingPage()))
-        .on(routes.products ,productsWrapper)
+        .on(routes.products ,(productsWrapper))
         .on(routes.productsbrand ,(match) => productsBrandWrapper(match))
         .on(routes.productinfo ,(match) => productInfoPageWrapper(match) )
         .on(routes.mycart , mycartPageWrapper)

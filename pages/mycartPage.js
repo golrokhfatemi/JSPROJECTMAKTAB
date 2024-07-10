@@ -2,7 +2,7 @@ import { root, router } from "../main";
 
 export function mycartPageWrapper() {
   mycartPage();
-  showDeletProduct();
+  // showDeletProduct();
   checkout();
   cancleDelet();
   backHome();
@@ -32,7 +32,7 @@ function mycartPage() {
       </div>
     </div>
     <!-- cards -->
-    <div id="cart-items-container" class="mx-4 my-6 scroll-container">
+    <div id="cart-items-container" class="scroll-container">
     </div>
 
     <!-- modal -->
@@ -62,40 +62,44 @@ function mycartPage() {
     </div>
         
     <!-- totalPrice -->
-    <div class="flex flex-row justify-start items-center">
-      <div class="px-8 mt-7 gap-6 flex flex-col">
-        <span>Total Price</span>
-        <div id="total-price" class="font-bold text-3xl">$0</div>
-      </div>
-      <div class="mt-5">
-        <button id="checkout" class="border-2 bg-zinc-900 rounded-full w-64 h-20 text-white">Check Out</button>
-      </div>
+    <div class="flex flex-row justify-center items-center ">
+          <div class="px-8 mt-7 gap-6 flex flex-col">
+            <span>Total Price</span>
+            <div id="total-price" class="font-bold text-3xl">$0</div>
+          </div>
+          <div class="mt-5">
+            <button id="checkout" class="border-2 bg-zinc-900 rounded-full w-64 h-20 text-white">Check Out</button>
+          </div>
     </div>
     
-    <footer class="fixed bottom-0 w-full">
-      <div class="flex gap-x-11 justify-center p-4 border-t-2 border-neutral-200">
-        <div id="home" class="flex flex-col items-center justify-between">
-          <img src="images/house-door-fill.png">
-          <p class="text-[10px] font-semibold">Home</p>
-        </div>
-        <div id="mycart" class="flex flex-col items-center justify-between">
-          <img src="images/bag.png">
-          <p class="text-[10px] font-semibold">Cart</p>
-        </div>
-        <div class="flex flex-col items-center justify-between">
-          <img src="images/cart2.png">
-          <p class="text-[10px] font-semibold">Orders</p>
-        </div>
-        <div class="flex flex-col items-center justify-between">
-          <img src="images/wallet2.png">
-          <p class="text-[10px] font-semibold">Wallet</p>
-        </div>
-        <div class="flex flex-col items-center justify-between">
-          <img src="images/person.png">
-          <p class="text-[10px] font-semibold">Profile</p>
-        </div>
-      </div>
-    </footer>
+    <footer class="footer">
+          <div class="flex gap-x-11 justify-center p-4 border-t-2 border-neutral-200">
+               <div id="home" class="flex flex-col items-center justify-between footer-item">
+               <img src="images/house-door-fill.png">
+               <p class="text-[10px] font-semibold">Home</p>
+               </div>
+
+               <div id="mycart" class="flex flex-col items-center justify-between footer-item">
+               <img src="images/bag.png">
+               <p class="text-[10px] font-semibold">Cart</p>
+               </div>
+
+               <div class="flex flex-col items-center justify-between footer-item">
+               <img src="images/cart2.png">
+               <p class="text-[10px] font-semibold">Orders</p>
+               </div>
+
+               <div class="flex flex-col items-center justify-between footer-item">
+               <img src="images/wallet2.png">
+               <p class="text-[10px] font-semibold">Wallet</p>
+               </div>
+
+               <div class="flex flex-col items-center justify-between footer-item">
+               <img src="images/person.png">
+               <p class="text-[10px] font-semibold">Profile</p>
+               </div>
+          </div>
+     </footer>
   `;
 
   loadCartItems();
@@ -112,7 +116,7 @@ function loadCartItems() {
 
     const cartItemElement = document.createElement("div");
     cartItemElement.className =
-      "bg-gray-50 rounded-3xl flex flex-row gap-8 px-4 py-5 mb-4";
+      "bg-gray-50 rounded-3xl flex flex-row gap-6 px-4 py-2 mx-3 my-2";
     cartItemElement.innerHTML = `
       <div class="flex items-center">
         <img src="${item.imageURL}">
@@ -122,17 +126,22 @@ function loadCartItems() {
           <p class="font-semibold text-xl">${item.name}</p>
           <i class="fa-solid fa-trash pt-3 trash-icon" data-id="${item.id}"></i>
         </div>
-        <p class="text-zinc-500">Size: ${item.size}</p>
+        <div class="flex flex-row >
+        <span class="text-zinc-500 ">${item.color}</span>
+        <span class="pl-2">|</span>
+        <span class="text-zinc-500 pl-2">Size: ${item.size}</span>
+        </div>
+        
         <div class="flex flex-row justify-between gap-6 items-center">
-          <p class="font-medium text-base">$${item.price}</p>
+          <p class="font-medium text-base">$${item.price * item.quantity}</p>
           <div class="bg-gray-200 rounded-xl flex justify-center text-center px-2 py-1">
-            <button class="font-bold px-3 decrease-quantity" data-id="${item.id}">
-              <i class="fa-solid fa-minus pt-1"></i>
-            </button>
+                <button class="font-bold px-3 decrease-quantity" data-id="${item.id}">
+                  <i class="fa-solid fa-minus pt-1"></i>
+                </button>
             <span class="text-lg pt-1 quantity" data-id="${item.id}">${item.quantity}</span>
-            <button class="font-bold px-3 increase-quantity" data-id="${item.id}">
-              <i class="fa-solid fa-plus pt-1"></i>
-            </button>
+                <button class="font-bold px-3 increase-quantity" data-id="${item.id}">
+                  <i class="fa-solid fa-plus pt-1"></i>
+                </button>
           </div>
         </div>
       </div>
@@ -162,19 +171,25 @@ function loadCartItems() {
   document.querySelectorAll(".trash-icon").forEach((icon) => {
     icon.addEventListener("click", (e) => {
       const id = e.target.dataset.id;
-      console.log(id);
+      // console.log(id);
+      showModal() 
       removeItemFromCart(id);
     });
   });
+
+  function removeItemFromCart(id) {
+    id = parseInt(id);
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    console.log(cart);
+    cart = cart.filter((item) => item.id !== id);
+    console.log(cart);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    mycartPage();
+  }
+
 }
 
-// function removeItemFromCart(id) {
-//   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-//   cart = cart.filter((item) => item.id === id);
-//   console.log(cart);
-//   localStorage.setItem("cart", JSON.stringify(cart));
-//   mycartPage();
-// }
+
 
 function updateItemQuantity(id, change) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -188,12 +203,10 @@ function updateItemQuantity(id, change) {
   });
 
   localStorage.setItem("cart", JSON.stringify(cart));
-  mycartPage(); // Refresh the cart page
+  mycartPage(); 
 }
 
-function showDeletProduct() {
-  // This function is no longer needed
-}
+
 
 function cancleDelet() {
   const cancleDelet = document.getElementById("cancle");

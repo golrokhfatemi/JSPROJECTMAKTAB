@@ -103,7 +103,7 @@ export function boardingPage() {
         if (newDivElement) {
           newDivElement.style.display = "none";
         }
-        
+      
         const sliderContainer = document.createElement("div");
         sliderContainer.id = "sliderContainer";
         sliderContainer.classList.add('fixed', 'inset-0');
@@ -123,12 +123,24 @@ export function boardingPage() {
           }
         ];
       
+        const pagination = document.createElement('div');
+        pagination.classList.add('pagination', 'flex', 'justify-center', 'mb-14', 'absolute', 'bottom-12', 'w-full');
+        slides.forEach((slide, index) => {
+          const paginationItem = document.createElement('div');
+          paginationItem.classList.add('w-3', 'h-3', 'bg-gray-300', 'mx-1', 'rounded-full', 'cursor-pointer');
+          if (index === 0) {
+            paginationItem.classList.add('active', 'bg-gray-700');
+          }
+          pagination.appendChild(paginationItem);
+        });
+        sliderContainer.appendChild(pagination);
+      
         slides.forEach((slide, index) => {
           const slideElement = document.createElement("div");
           slideElement.classList.add('slide', 'absolute', 'inset-0', 'bg-cover', 'bg-center');
-          slideElement.style.backgroundImage = `url(${slides.imageUrl})`;
+          slideElement.style.backgroundImage = `url(${slide.imageUrl})`;
           slideElement.style.display = index === 0 ? "block" : "none";
-
+      
           const imgElement = document.createElement('img');
           imgElement.src = slide.imageUrl;
           imgElement.alt = "Slide Image";
@@ -136,24 +148,22 @@ export function boardingPage() {
           slideElement.appendChild(imgElement);
       
           const innerDiv = document.createElement("div");
-          innerDiv.classList.add('absolute', 'p-4' ,'flex' ,"justify-center" ,"flex-col" , "gap-36" ,"flex" ,"items-center");
+          innerDiv.classList.add('absolute', 'p-4', 'flex', 'justify-center', 'flex-col', 'gap-36', 'flex', 'items-center');
           innerDiv.style.color = 'black';
       
           const welcomText = document.createElement("p");
           welcomText.innerHTML = slide.text;
-          welcomText.classList.add("text-3xl" ,"font-semibold" ,"text-center");
-      
+          welcomText.classList.add("text-3xl", "font-semibold", "text-center");
       
           const btnDiv = document.createElement("div");
-          btnDiv.classList.add("buttom-0")
+          btnDiv.classList.add("bottom-0");
           const nextBtn = document.createElement("button");
-          nextBtn.classList.add( "t-[847px]" ,"rouded-[30px]", "py-3" , "rounded-full", "bg-gray-400" , "w-[380px]" , "hover:bg-slate-900", "hover:text-white" ,"justify-center" ,"flex" ,)
-
+          nextBtn.classList.add("t-[847px]", "rounded-[30px]", "py-3", "rounded-full", "bg-gray-400", "w-[380px]", "hover:bg-slate-900", "hover:text-white", "justify-center", "flex");
+      
           nextBtn.textContent = index === slides.length - 1 ? "Get Started" : "Next";
-          nextBtn.classList.add("text-black", "border", "rounded", "px-4","flex" ,"justify-center");
+          nextBtn.classList.add("text-black", "border", "rounded", "px-4", "flex", "justify-center");
           nextBtn.addEventListener("click", () => showNextSlide(index));
       
-         
           innerDiv.appendChild(welcomText);
           btnDiv.appendChild(nextBtn);
           innerDiv.appendChild(btnDiv);
@@ -166,9 +176,14 @@ export function boardingPage() {
       
         function showNextSlide(index) {
           const slides = document.querySelectorAll(".slide");
+          const paginationItems = document.querySelectorAll('.pagination div');
           slides[index].style.display = "none";
+          paginationItems[index].classList.remove('active', 'bg-gray-700');
+      
           if (index < slides.length - 1) {
-            slides[index + 1].style.display = "block";
+            currentSlide = index + 1;
+            slides[currentSlide].style.display = "block";
+            paginationItems[currentSlide].classList.add('active', 'bg-gray-700');
           } else {
             sliderContainer.style.display = "none";
             router.navigate(routes.login);

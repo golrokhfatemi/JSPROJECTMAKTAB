@@ -53,7 +53,7 @@ export function productsPage(products){
           </div>
           <div class="flex justify-center mb-4">
           
-                    <div class="bg-gray-100 p-2 rounded-md w-[386px] h-[234px]  items-center justify-center flex flex-wrap gap-6 mb-4">
+                    <div class=" p-2 rounded-md w-[386px] h-[234px]  items-center justify-center flex flex-wrap gap-6 mb-4">
                     
                          <div class="brand-group w-[60px] h-[91px] ">
                               <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -166,36 +166,37 @@ export function productsPage(products){
                
           </div>
      </main>
-
-
-     <footer>
+      <footer class="footer">
           <div class="flex gap-x-11 justify-center p-4 border-t-2 border-neutral-200">
-               <div id="home" class="flex flex-col items-center justify-between">
+               <div id="home" class="flex flex-col items-center justify-between footer-item">
                <img src="images/house-door-fill.png">
                <p class="text-[10px] font-semibold">Home</p>
                </div>
 
-               <div id="mycart" class="flex flex-col items-center justify-between">
+               <div id="mycart" class="flex flex-col items-center justify-between footer-item">
                <img src="images/bag.png">
                <p class="text-[10px] font-semibold">Cart</p>
                </div>
 
-               <div class="flex flex-col items-center justify-between">
+               <div class="flex flex-col items-center justify-between footer-item">
                <img src="images/cart2.png">
                <p class="text-[10px] font-semibold">Orders</p>
                </div>
 
-               <div class="flex flex-col items-center justify-between">
+               <div class="flex flex-col items-center justify-between footer-item">
                <img src="images/wallet2.png">
                <p class="text-[10px] font-semibold">Wallet</p>
                </div>
 
-               <div class="flex flex-col items-center justify-between">
+               <div class="flex flex-col items-center justify-between footer-item">
                <img src="images/person.png">
                <p class="text-[10px] font-semibold">Profile</p>
                </div>
           </div>
      </footer>
+
+
+     
     `
 
      }else{
@@ -267,3 +268,4 @@ function mycart(){
           router.navigate("/mycart")
      })
 }
+
