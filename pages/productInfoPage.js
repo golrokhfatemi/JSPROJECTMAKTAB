@@ -24,29 +24,38 @@ const decreaseButton = document.getElementById('decrease');
 const totalPriceDisplay = document.getElementById('total-price');
 
 
-let count = 0;
-let totalPrice = data.price * count;
+
 
 function updateTotalPrice ()  {
+  let count = 0;
+let totalPrice ;
+  console.log(data.price);
+  
+  
+
+  increaseButton.addEventListener('click', () => {
+    totalPrice = data.price * count;
+  totalPriceDisplay.innerText = `$${totalPrice}`;
+    count++;
+    numberElement.textContent = count;
+    
+    
+});
+
+
+decreaseButton.addEventListener('click', () => {
   totalPrice = data.price * count;
   totalPriceDisplay.innerText = `$${totalPrice}`;
-  
+    if(count >0)
+    count--;
+    numberElement.textContent = count;
+});
+
 };
 
-       increaseButton.addEventListener('click', () => {
-           count++;
-           numberElement.textContent = count;
-           
-       });
-
-       
-       decreaseButton.addEventListener('click', () => {
-           if(count >0)
-           count--;
-           numberElement.textContent = count;
-       });
+      
        updateTotalPrice()
-       addToCart()
+        addToCart(data)
      
 }
 
@@ -55,7 +64,7 @@ function productInfoPage(product){
   console.log(product.colors);
   
     root.innerHTML = `
-    <div class="h-screen w-full">
+    <div class="h-screen w-full flex-grow">
         <!-- slider --> 
             <div class="bg-slate-500 flex justify-center items-center w-full h-64">
               <img src="${product.imageURL}3.png">    
@@ -75,7 +84,7 @@ function productInfoPage(product){
 
             <div class="px-8 mt-7 gap-4 flex flex-col">
               <h3 class="font-bold text-2xl">Description</h3>
-              <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores fugit libero sunt veritatis, possimus molestiae non aspernatur iste obcaecati nobis.</p>
+              <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores fugit libero sunt veritatis.</p>
             </div>
           <!-- size & color -->
             <div class="px-8 mt-7 gap-6 flex flex-row ">
@@ -133,33 +142,33 @@ function productInfoPage(product){
         
     
     <footer>
-      <div class="flex gap-x-11 justify-center p-4 border-t-2 border-neutral-200">
-            <div class="flex flex-col items-center justify-between">
-              <img src="images/house-door-fill.png">
-              <p class="text-[10px] font-semibold">Home</p>
-            </div>
+          <div class="flex gap-x-11 justify-center p-4 border-t-2 border-neutral-200">
+               <div class="flex flex-col items-center justify-between">
+               <img src="images/house-door-fill.png">
+               <p class="text-[10px] font-semibold">Home</p>
+               </div>
 
-            <div class="flex flex-col items-center justify-between">
-              <img src="images/bag.png">
-              <p class="text-[10px] font-semibold">Cart</p>
-            </div>
+               <div class="flex flex-col items-center justify-between">
+               <img src="images/bag.png">
+               <p class="text-[10px] font-semibold">Cart</p>
+               </div>
 
-            <div class="flex flex-col items-center justify-between">
-              <img src="images/cart2.png">
-              <p class="text-[10px] font-semibold">Orders</p>
-            </div>
+               <div class="flex flex-col items-center justify-between">
+               <img src="images/cart2.png">
+               <p class="text-[10px] font-semibold">Orders</p>
+               </div>
 
-            <div class="flex flex-col items-center justify-between">
-              <img src="images/wallet2.png">
-              <p class="text-[10px] font-semibold">Wallet</p>
-            </div>
+               <div class="flex flex-col items-center justify-between">
+               <img src="images/wallet2.png">
+               <p class="text-[10px] font-semibold">Wallet</p>
+               </div>
 
-            <div class="flex flex-col items-center justify-between">
-              <img src="images/person.png">
-              <p class="text-[10px] font-semibold">Profile</p>
-            </div>
-      </div>
-    </footer>
+               <div class="flex flex-col items-center justify-between">
+               <img src="images/person.png">
+               <p class="text-[10px] font-semibold">Profile</p>
+               </div>
+          </div>
+     </footer>
     <div class="bg-brand-black bg-brand-red bg-brand-blue bg-brand-brown bg-brand-white hidden"></div>
     `
 }
@@ -170,9 +179,33 @@ async function productInfoApi(id){
   return response.data
 }
 
-function addToCart(){
-  const addToCart = document.getElementById("add-to-cart")
-  addToCart.addEventListener("click" , () => {
+function addToCart(product){
+    const addToCart = document.getElementById("add-to-cart")
+    addToCart.addEventListener("click" , () => {
+    const numberElement = document.getElementById('number');
+    const quantity = parseInt(numberElement.textContent);
+    const cartItem = {
+     
+      id: product.id,
+      
+      name: product.name,
+      price: product.price,
+      quantity: quantity,
+      imageURL: product.imageURL
+    };
+    
+
+    // Check if there is any cart data in localStorage
+    let cart = localStorage.getItem('cart');
+    if (cart) {
+      cart = JSON.parse(cart);
+    } else {
+      cart = [];
+    }
+
+    // Add the new item to the cart
+    cart.push(cartItem);
+    localStorage.setItem('cart', JSON.stringify(cart));
     router.navigate("/mycart")
   })
 }

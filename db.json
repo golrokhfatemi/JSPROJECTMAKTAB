@@ -12,30 +12,7 @@
     }
   ],
   "products": [
-    {
-      "id": 1,
-      "name": "Nike React Infinity Run Flyknit",
-      "brand": "NIKE",
-      "gender": "MEN",
-      "category": "RUNNING",
-      "price": 160,
-      "sizes": [
-        41,
-        43,
-        45
-      ],
-      "colors": [
-        "black",
-        "brown",
-        "white",
-        "blue",
-        "red"
-      ],
-      "is_in_inventory": true,
-      "items_left": 3,
-      "imageURL": "/src/img/products/nike/1.webp",
-      "slug": "nike-react-infinity-run-flyknit"
-    },
+    
     {
       "id": 2,
       "name": "Nike React Miler",
@@ -153,7 +130,7 @@
       ],
       "is_in_inventory": true,
       "items_left": 3,
-      "imageURL": "/src/img/products/converse/1.jpg",
+      "imageURL": "https://wowconcept.com/es/product/CNV2SNE01004CTW008/chuck-70?gad_source=1&gclid=Cj0KCQjwv7O0BhDwARIsAC0sjWMi72FkNQjZNCGslGrXwpRUrLEZU22kMSk-m70SqrA8k9N6M7hec3kaAvYpEALw_wcB",
       "slug": "nike-phantom-vision-elite-dynamic-fit-fg"
     },
     {

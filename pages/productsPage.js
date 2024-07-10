@@ -11,6 +11,8 @@ export async function productsWrapper(){
      brandShow();
      categoryBrandShow()
      productInfoDisplay()
+     backHome()
+     mycart()
      
      
      
@@ -168,12 +170,12 @@ export function productsPage(products){
 
      <footer>
           <div class="flex gap-x-11 justify-center p-4 border-t-2 border-neutral-200">
-               <div class="flex flex-col items-center justify-between">
+               <div id="home" class="flex flex-col items-center justify-between">
                <img src="images/house-door-fill.png">
                <p class="text-[10px] font-semibold">Home</p>
                </div>
 
-               <div class="flex flex-col items-center justify-between">
+               <div id="mycart" class="flex flex-col items-center justify-between">
                <img src="images/bag.png">
                <p class="text-[10px] font-semibold">Cart</p>
                </div>
@@ -250,4 +252,18 @@ function productInfoDisplay(){
 
      }))
 
+}
+
+function backHome(){
+const backhome = document.getElementById("home")
+backhome.addEventListener("click" , () => {
+     router.navigate("/products")
+})
+}
+
+function mycart(){
+     const myCart = document.getElementById("mycart")
+     myCart.addEventListener("click" , ()=> {
+          router.navigate("/mycart")
+     })
 }

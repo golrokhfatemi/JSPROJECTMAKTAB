@@ -10,6 +10,7 @@ import { productsPage, productsWrapper } from './pages/productsPage';
 import { productsBrandWrapper } from './pages/productsBrand';
 import { productInfoPageWrapper } from './pages/productInfoPage';
 import { mycartPageWrapper } from './pages/mycartPage';
+import { checkoutWapper } from './pages/checkoutPage';
 
 
 
@@ -49,7 +50,8 @@ export const routes ={
   register : '/register',
   productsbrand :'/productsbrand/:id',
   productinfo :'/productinfo/:id',
-  mycart :'/mycart'
+  mycart :'/mycart',
+  checkout: '/checkout'
   
 }
 
@@ -60,6 +62,7 @@ export const routes ={
         .on(routes.productsbrand ,(match) => productsBrandWrapper(match))
         .on(routes.productinfo ,(match) => productInfoPageWrapper(match) )
         .on(routes.mycart , mycartPageWrapper)
+        .on(routes.checkout , checkoutWapper)
         .on(routes.login ,() => render(loginPage(), login))
         .on(routes.register , () =>render(registerPage(), register))
         .resolve()
