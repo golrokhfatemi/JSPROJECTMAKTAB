@@ -246,7 +246,7 @@ function productInfoDisplay(){
      const info= document.querySelectorAll(".info")
      info.forEach((item,index) => item.addEventListener("click" ,(e)=>{
           const id =info[index].id
-          console.log(id);
+          // console.log(id);
           router.navigate(`/productinfo/${id}`)
           
 

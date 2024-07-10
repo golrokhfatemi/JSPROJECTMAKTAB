@@ -1,69 +1,69 @@
-import httpServer from "../api"
-import { root, router } from "../main"
+import httpServer from "../api";
+import { root, router } from "../main";
 
+export async function productInfoPageWrapper(match) {
+  const data = await productInfoApi(match.data.id);
+  // console.log(match.data.id);
+  productInfoPage(data);
+  if (document.querySelector(".color-wrapper")) {
+    data.colors.map((item) => {
+      document.querySelector(
+        ".color-wrapper"
+      ).innerHTML += `<button id="${item}" class="color-select bg-brand-${item} rounded-full w-9 h-9 mr-1"></button>`;
+    });
+  }
+  if (document.querySelector(".size-wrapper")) {
+    data.sizes.map((item) => {
+      document.querySelector(
+        ".size-wrapper"
+      ).innerHTML += `<button id="${item}" class="size-select rounded-full w-9 h-9 mr-1 border-2 border-slate-800">${item}</button>`;
+    });
+  }
 
-export async function productInfoPageWrapper(match){
-const data = await productInfoApi(match.data.id)
-console.log(match.data.id);
-productInfoPage(data)
-if (document.querySelector(".color-wrapper")) {
-  data.colors.map((item) => {
-    document.querySelector(".color-wrapper").innerHTML += `<button id="${item}" class="color-select bg-brand-${item} rounded-full w-9 h-9 mr-1"></button>`
-    });    
-}
-if (document.querySelector(".size-wrapper")) {
-  data.sizes.map((item) => {
-    document.querySelector(".size-wrapper").innerHTML += `<button id="${item}" class=" rounded-full w-9 h-9 mr-1 border-2 border-slate-800">${item}</button>`
-    });    
-}
+  const numberElement = document.getElementById("number");
+  const increaseButton = document.getElementById("increase");
+  const decreaseButton = document.getElementById("decrease");
+  const totalPriceDisplay = document.getElementById("total-price");
 
-
-const numberElement = document.getElementById('number');
-const increaseButton = document.getElementById('increase');
-const decreaseButton = document.getElementById('decrease');
-const totalPriceDisplay = document.getElementById('total-price');
-
-
-
-
-function updateTotalPrice ()  {
-  let count = 0;
-let totalPrice ;
-  console.log(data.price);
-  
   
 
-  increaseButton.addEventListener('click', () => {
-    totalPrice = data.price * count;
-  totalPriceDisplay.innerText = `$${totalPrice}`;
-    count++;
-    numberElement.textContent = count;
+  function updateTotalPrice() {
+    let count = 0;
+    let totalPrice ;
     
     
-});
+
+    increaseButton.addEventListener("click", () => {
+      console.log(data);
+      console.log(data.price);
+      count++;
+      totalPrice = data.price * count;
+      totalPriceDisplay.innerText = `$${totalPrice}`;
+      numberElement.textContent = count;
+    });
+
+    decreaseButton.addEventListener("click", () => {
+      if (count > 0) count--;
+      totalPrice = data.price * count;
+      totalPriceDisplay.innerText = `$${totalPrice}`;
+      numberElement.textContent = count;
+    });
+  }
 
 
-decreaseButton.addEventListener('click', () => {
-  totalPrice = data.price * count;
-  totalPriceDisplay.innerText = `$${totalPrice}`;
-    if(count >0)
-    count--;
-    numberElement.textContent = count;
-});
+  
 
-};
 
-      
-       updateTotalPrice()
-        addToCart(data)
-     
+
+
+  updateTotalPrice();
+  addToCart(data);
 }
 
+function productInfoPage(product) {
+  // console.log(product.colors);
 
-function productInfoPage(product){
-  console.log(product.colors);
-  
-    root.innerHTML = `
+  root.innerHTML = `
     <div class="h-screen w-full flex-grow">
         <!-- slider --> 
             <div class="bg-slate-500 flex justify-center items-center w-full h-64">
@@ -170,33 +170,57 @@ function productInfoPage(product){
           </div>
      </footer>
     <div class="bg-brand-black bg-brand-red bg-brand-blue bg-brand-brown bg-brand-white hidden"></div>
-    `
+    `;
 }
 
-
-async function productInfoApi(id){
-  const response = await httpServer.get(`/products/${id}`)
-  return response.data
+async function productInfoApi(id) {
+  const response = await httpServer.get(`/products/${id}`);
+  return response.data;
 }
 
-function addToCart(product){
-    const addToCart = document.getElementById("add-to-cart")
-    addToCart.addEventListener("click" , () => {
-    const numberElement = document.getElementById('number');
+function addToCart(product) {
+  let selectedColor = null;
+  let selectedSize = null;
+
+
+  document.querySelectorAll('.color-select').forEach(button => {
+    button.addEventListener('click', (event) => {
+      console.log(event.target.id.split('-'));
+      console.log(event.target.id);
+      selectedColor = event.target.id.split('-');
+      document.querySelectorAll('.color-select').forEach(btn => btn.classList.remove('selected'));
+      event.target.classList.add('selected');
+    });
+  });
+
+  document.querySelectorAll('.size-select').forEach(button => {
+    button.addEventListener('click', (event) => {
+      console.log(event.target.id);
+      selectedSize = event.target.id.split('-');
+      document.querySelectorAll('.size-select').forEach(btn => btn.classList.remove('selected'));
+      event.target.classList.add('selected');
+    });
+  });
+
+
+
+
+  const addToCart = document.getElementById("add-to-cart");
+  addToCart.addEventListener("click", () => {
+    const numberElement = document.getElementById("number");
     const quantity = parseInt(numberElement.textContent);
     const cartItem = {
-     
       id: product.id,
-      
       name: product.name,
       price: product.price,
       quantity: quantity,
-      imageURL: product.imageURL
+      color: selectedColor,
+      size: selectedSize,
+      imageURL: product.imageURL,
     };
-    
 
     // Check if there is any cart data in localStorage
-    let cart = localStorage.getItem('cart');
+    let cart = localStorage.getItem("cart");
     if (cart) {
       cart = JSON.parse(cart);
     } else {
@@ -205,7 +229,7 @@ function addToCart(product){
 
     // Add the new item to the cart
     cart.push(cartItem);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    router.navigate("/mycart")
-  })
+    localStorage.setItem("cart", JSON.stringify(cart));
+    router.navigate("/mycart");
+  });
 }
